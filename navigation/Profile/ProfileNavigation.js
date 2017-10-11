@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, ScrollView, Image } from 'react-native';
+import { Button, ScrollView, Image, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import MyNavScreen from '../MyNavScreen';
 
 /*Profile*/
 const ProfileScreen = ({ navigation }) => (
-    <MyNavScreen banner="Profile Screen" navigation={navigation} />
+    <View>
+        <MyNavScreen banner="Profile Screen" navigation={navigation} />
+    </View>
 );
 
 const FavoritesScreen = ({ navigation }) => (
