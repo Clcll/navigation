@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, ScrollView, Image } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-
+import SampleText from './SampleText';
 
 const MyNavScreen = ({ navigation, banner }) => (
     <ScrollView>
+        <SampleText banner={banner}/>
         <Button
             onPress={() => navigation.navigate('Profile', { name: 'Jordan' })}
             title="Open profile screen"
@@ -21,8 +22,8 @@ const MyNavScreen = ({ navigation, banner }) => (
     </ScrollView>
 );
 
-const MyHomeScreen = ({ navigation }) => (
-    <MyNavScreen banner="Home Screen" navigation={navigation} />
+const StocksScreen = ({ navigation }) => (
+    <MyNavScreen banner="Stocks Screen" navigation={navigation} />
 );
 
 const MyProfileScreen = ({ navigation }) => (
@@ -41,11 +42,11 @@ const MySettingsScreen = ({ navigation }) => (
 );
 
 const MainTab = StackNavigator({
-    Home: {
-        screen: MyHomeScreen,
+    Stocks: {
+        screen: StocksScreen,
         path: '/',
         navigationOptions: {
-            title: 'Welcome',
+            title: 'Stocks',
         },
     },
     Profile: {
@@ -79,7 +80,7 @@ const StacksInTabs = TabNavigator(
             screen: MainTab,
             path: '/',
             navigationOptions: {
-                tabBarLabel: 'Home',
+                tabBarLabel: 'Stocks',
                 tabBarIcon: ({ tintColor, focused }) => (
                     <Image
                         style={{width: 26, height: 26}}
