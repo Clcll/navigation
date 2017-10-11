@@ -7,6 +7,10 @@ export default ({ navigation, banner }) => (
         <SampleText banner={banner}/>
 
         <Button
+            onPress={() => navigation.navigate('SignUp', { tab: 'Online' })}
+            title="Registration"
+        />
+        <Button
             onPress={() => navigation.navigate('Favorites', { tab: 'Online' })}
             title="Favorites in PROFILE tab"
         />
@@ -37,7 +41,7 @@ export default ({ navigation, banner }) => (
             title="Go to profile tab"
         />
         <Text style={{textAlign: 'center', fontSize: 24}}>{'/* BACK */'}</Text>
-
+        
         <Button onPress={() => navigation.goBack(null)} title="Go back" />
     </ScrollView>
 );

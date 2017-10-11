@@ -7,8 +7,34 @@ import CasesTab from './Cases/CasesNavigation';
 import MapTab from './Map/MapNavigation';
 import ProfileTab from './Profile/ProfileNavigation';
 
+import MyNavScreen from './MyNavScreen';
 
-const StacksInTabs = TabNavigator(
+/*Stocks*/
+const SignUp = ({ navigation }) => (
+    <MyNavScreen banner="SignUp Screen" navigation={navigation} />
+);
+
+const SignIn = ({ navigation }) => (
+    <MyNavScreen banner="SignIn Screen" navigation={navigation} />
+);
+/*Stocks End*/
+
+const SignedOut = StackNavigator({
+    SignIn: {
+        screen: SignIn,
+        navigationOptions: {
+            title: "Sign In",
+        }
+    },
+    SignUp: {
+        screen: SignUp,
+        navigationOptions: {
+            title: "Sign Up",
+        }
+    },
+});
+
+const SignedIn = TabNavigator(
     {
         StocksTab: {
             screen: StocksTab,
@@ -70,4 +96,26 @@ const StacksInTabs = TabNavigator(
     }
 );
 
-export default StacksInTabs;
+export default (signedIn = false) => {
+    return StackNavigator(
+        {
+            SignedIn: {
+                screen: SignedIn,
+                navigationOptions: {
+                    gesturesEnabled: false
+                }
+            },
+            SignedOut: {
+                screen: SignedOut,
+                navigationOptions: {
+                    gesturesEnabled: false
+                }
+            }
+        },
+        {
+            headerMode: "none",
+            mode: "modal",
+            initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+        }
+    );
+};

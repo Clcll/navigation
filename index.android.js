@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import MyNavScreen from './navigation/navigation';
+import CreateRootNavigator from './navigation/navigation';
 
-AppRegistry.registerComponent('Wrapper', () => MyNavScreen);
+
+AppRegistry.registerComponent('Wrapper', () => CreateRootNavigator(false));
